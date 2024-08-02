@@ -1,3 +1,4 @@
+import {useDispatch} from "react-redux";
 import {Box, Link} from "@mui/material";
 import {
   ContactCard,
@@ -6,14 +7,29 @@ import {
   ContactTypography
 } from "./styledComponents.js";
 import {CancelOutlined} from "@mui/icons-material";
+import {deleteContact, fetchContacts} from "../../store/contacts/asyncActions.js";
 import ContactAvatar from "../ContactAvatar";
 import Tags from "../Tags";
 
-const ContactItem = ({avatar, name, email, tags}) => {
+const ContactItem = ({id, avatar, name, email, tags}) => {
+  const dispatch = useDispatch();
+
+  const deleteContactHandler =  async () => {
+    try {
+      await dispatch(deleteContact(id));
+      dispatch(fetchContacts());
+    } catch (e) {
+      return e;
+    }
+  }
 
   return (
     <ContactCard>
-      <ContactIconButton aria-label="delete" size="large">
+      <ContactIconButton
+        aria-label="delete"
+        size="large"
+        onClick={deleteContactHandler}
+      >
         <CancelOutlined />
       </ContactIconButton>
       <ContactAvatar avatar={avatar} name={name} />

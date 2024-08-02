@@ -11,3 +11,15 @@ export const fetchContacts = createAsyncThunk(
     return data.resources;
   }
 );
+
+export const addContact = createAsyncThunk(
+  'contacts/addContact', async (data) => {
+    await instanceAuth.post('/v1/contact', data);
+  }
+);
+
+export const deleteContact = createAsyncThunk(
+  'contacts/deleteContact', async (contactId) => {
+    await instanceAuth.delete(`/v1/contact/${contactId}`);
+  }
+);

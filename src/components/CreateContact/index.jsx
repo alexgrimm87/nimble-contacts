@@ -7,14 +7,13 @@ import {
   CreateTextField
 } from "./styledComponents.js";
 import {useDispatch, useSelector} from "react-redux";
-import {postContact} from "../../store/createContact/asyncActions.js";
-import {fetchContacts} from "../../store/contacts/asyncActions.js";
+import {addContact, fetchContacts} from "../../store/contacts/asyncActions.js";
 
 const avatarDemo = 'https://static.intercomassets.com/avatars/800277/square_128/custom_avatar-1542751821.png';
 
 const CreateContact = ({margin}) => {
   const dispatch = useDispatch();
-  const {loading} = useSelector((state) => state.createContact);
+  const {isContactAdding} = useSelector((state) => state.contacts);
 
   const {
     register,
@@ -54,7 +53,7 @@ const CreateContact = ({margin}) => {
         },
         avatar_url: avatarDemo
       };
-      await dispatch(postContact(contactData));
+      await dispatch(addContact(contactData));
       dispatch(fetchContacts());
       reset();
     } catch (e) {
@@ -118,7 +117,7 @@ const CreateContact = ({margin}) => {
         helperText={errors.email && errors.email.message}
       />
       <CreateLoadingButton
-        loading={loading}
+        loading={isContactAdding}
         type="submit"
         variant="contained"
       >

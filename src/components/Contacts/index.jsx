@@ -8,13 +8,13 @@ import ContactItem from "../ContactItem";
 
 const Contacts = () => {
   const dispatch = useDispatch();
-  const {contacts, loading, error} = useSelector((state) => state.contacts);
+  const {contacts, isContactsFetching, error} = useSelector((state) => state.contacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  if (loading) {
+  if (isContactsFetching) {
     return <Preloader />;
   }
 
@@ -43,6 +43,7 @@ const Contacts = () => {
         return (
           <ContactItem
             key={contact.id}
+            id={contact.id}
             avatar={contact.avatar_url}
             name={companyName ? companyName : `${firstName} ${lastName}`}
             email={email}
