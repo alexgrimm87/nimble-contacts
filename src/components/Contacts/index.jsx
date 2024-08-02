@@ -1,9 +1,10 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {Box, Typography} from "@mui/material";
 import {fetchContacts} from "../../store/contacts/asyncActions.js";
-import ContactItem from "../ContactItem/index.jsx";
-import Preloader from "../Preloader/index.jsx";
-import ErrorMessage from "../ErrorMessage/index.jsx";
+import Preloader from "../Preloader";
+import ErrorMessage from "../ErrorMessage";
+import ContactItem from "../ContactItem";
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,12 @@ const Contacts = () => {
   }
 
   return (
-    <div>
+    <Box sx={{
+      width: {xs: '100%', md: '64%'}
+    }}>
+      <Typography variant="h2" component="h2">
+        Contacts
+      </Typography>
       {contacts.map((contact) => {
         const companyNameField = contact.fields["company name"];
         const firstNameField = contact.fields["first name"];
@@ -44,7 +50,7 @@ const Contacts = () => {
           />
         )
       })}
-    </div>
+    </Box>
   );
 };
 

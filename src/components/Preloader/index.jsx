@@ -1,10 +1,11 @@
-import {Box, CircularProgress} from "@mui/material";
+import {CircularProgress} from "@mui/material";
+import {PreloaderBox} from "./styledComponents.js";
 
 const Preloader = () => {
   return (
-    <Box sx={{textAlign: 'center'}}>
+    <PreloaderBox>
       <CircularProgress sx={{color: 'grey'}} />
-    </Box>
+    </PreloaderBox>
   );
 };
 

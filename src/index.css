@@ -7,7 +7,7 @@
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 36px 34px 263px 34px;
 }
 
 :root {
@@ -21,8 +21,7 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  min-width: 400px;
   min-height: 100vh;
 }
 

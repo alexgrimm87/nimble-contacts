@@ -11,10 +11,12 @@ export const ContactCard = styled(Card)({
   display: 'flex',
   marginBottom: '30px',
   padding: '16.5px 45px 25px 17.5px',
-  maxWidth: '558px',
   width: '100%',
   background: '#ededed',
-  boxShadow: 'unset'
+  boxShadow: 'unset',
+  '&:last-child': {
+    marginBottom: 0
+  }
 });
 
 export const ContactIconButton = styled(IconButton)({

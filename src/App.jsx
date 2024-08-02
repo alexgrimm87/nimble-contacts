@@ -1,7 +1,7 @@
 import {Route, Routes} from "react-router-dom";
-import Home from "./pages/Home/index.jsx";
 import {ThemeProvider} from "@mui/material";
-import theme from './theme';
+import theme from "./theme";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -13,4 +13,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

@@ -5,7 +5,7 @@ import {
   ContactIconButton,
   ContactTypography
 } from "./styledComponents.js";
-import {CancelOutlined} from '@mui/icons-material';
+import {CancelOutlined} from "@mui/icons-material";
 import ContactAvatar from "../ContactAvatar";
 import Tags from "../Tags";
 

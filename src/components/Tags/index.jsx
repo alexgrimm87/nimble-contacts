@@ -1,5 +1,5 @@
 import {TagsList} from "./styledComponents.js";
-import TagItem from "../TagItem/index.jsx";
+import TagItem from "../TagItem";
 
 const Tags = ({tags}) => {
   return (
