@@ -25,7 +25,7 @@ const AddTagForm = ({id, tags}) => {
 
     try {
       await dispatch(addTag(payload));
-      dispatch(fetchContactById(id));
+      await dispatch(fetchContactById(id));
       reset();
     } catch (e) {
       return e;

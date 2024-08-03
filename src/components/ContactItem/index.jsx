@@ -19,7 +19,7 @@ const ContactItem = ({id, avatar, name, email, tags}) => {
     if (window.confirm('Do you want to remove the contact?')) {
       try {
         await dispatch(deleteContact(id));
-        dispatch(fetchContacts());
+        await dispatch(fetchContacts());
       } catch (e) {
         return e;
       }
