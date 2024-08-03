@@ -3,11 +3,11 @@ import {Typography} from "@mui/material";
 import {
   CreateBox,
   CreateInputLabel,
-  CreateLoadingButton,
   CreateTextField
 } from "./styledComponents.js";
 import {useDispatch, useSelector} from "react-redux";
 import {addContact, fetchContacts} from "../../store/contacts/asyncActions.js";
+import {CreateLoadingButton} from "../CreateLoadingButton/index.js";
 
 const avatarDemo = 'https://static.intercomassets.com/avatars/800277/square_128/custom_avatar-1542751821.png';
 
@@ -120,6 +120,7 @@ const CreateContact = ({margin}) => {
         loading={isContactAdding}
         type="submit"
         variant="contained"
+        sx={{marginTop: '6px !important'}}
       >
         Add Contact
       </CreateLoadingButton>

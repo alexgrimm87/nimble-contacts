@@ -1,11 +1,20 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {fetchContacts, addContact, deleteContact} from "./asyncActions";
+import {
+  fetchContacts,
+  fetchContactById,
+  addContact,
+  deleteContact,
+  addTag,
+} from "./asyncActions";
 
 const initialState = {
   contacts: [],
+  contact: {},
   isContactsFetching: false,
+  isContactFetching: false,
   isContactAdding: false,
   isContactDeleting: false,
+  isTagAdding: false,
   error: null
 }
 
@@ -26,6 +35,20 @@ export const contactsSlice = createSlice({
       })
       .addCase(fetchContacts.rejected, (state, action) => {
         state.isContactsFetching = false;
+        state.error = action.error.message || 'Failed to fetch contacts';
+      })
+
+      //fetchContactById
+      .addCase(fetchContactById.pending, (state) => {
+        state.isContactFetching = true;
+        state.error = null;
+      })
+      .addCase(fetchContactById.fulfilled, (state, action) => {
+        state.isContactFetching = false;
+        state.contact = action.payload;
+      })
+      .addCase(fetchContactById.rejected, (state, action) => {
+        state.isContactFetching = false;
         state.error = action.error.message || 'Failed to fetch contacts';
       })
 
@@ -53,6 +76,19 @@ export const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, (state, action) => {
         state.isContactDeleting = false;
         state.error = action.error.message || 'Failed to delete contact';
+      })
+
+      //addTag
+      .addCase(addTag.pending, (state) => {
+        state.isTagAdding = true;
+        state.error = null;
+      })
+      .addCase(addTag.fulfilled, (state) => {
+        state.isTagAdding = false;
+      })
+      .addCase(addTag.rejected, (state, action) => {
+        state.isTagAdding = false;
+        state.error = action.error.message || 'Failed to add tag';
       })
   }
 });

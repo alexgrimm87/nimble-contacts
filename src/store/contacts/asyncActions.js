@@ -12,6 +12,13 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
+export const fetchContactById = createAsyncThunk(
+  'contacts/fetchContactById', async (id) => {
+    const {data} = await instanceAuth.get(`/v1/contact/${id}`);
+    return data.resources[0];
+  }
+);
+
 export const addContact = createAsyncThunk(
   'contacts/addContact', async (data) => {
     await instanceAuth.post('/v1/contact', data);
@@ -21,5 +28,11 @@ export const addContact = createAsyncThunk(
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact', async (contactId) => {
     await instanceAuth.delete(`/v1/contact/${contactId}`);
+  }
+);
+
+export const addTag = createAsyncThunk(
+  'contacts/addTag', async (data) => {
+    await instanceAuth.put(`/v1/contacts/${data.id}/tags`, { tags: data.tags });
   }
 );
